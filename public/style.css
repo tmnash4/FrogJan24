@@ -1,0 +1,261 @@
+body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("media/background.jpg");
+  /* opacity: 0.5; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* background-color: rgba(70, 230, 26, 0.5); /* Tint color */
+  /* background-blend-mode: multiply; */
+  transition: background-color 10s, opacity 10s
+}
+
+/* .the {
+  background-color: rgba(46, 59, 208, 0.64);
+} */
+
+
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  #originalFrog {
+    min-width: 40vw;
+  }
+  #secondFrog {
+    width: 10em;
+  }
+
+  #thirdFrog {
+    min-width: 40vw;
+  }
+
+  #original.Frog {
+   min-width: 40vw;
+  }
+
+  #fourthFrog {
+    min-width: 40vw;
+  }
+
+  #fifthFrog {
+    min-width: 10em;
+  }
+
+  #sixthFrog {
+    min-width: 40vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+
+}
+
+
+
+#flexDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  visibility: visible;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#mainButton {
+  border: none;
+  /* font-family: serif; */
+  color: #102c2f;
+  background-color: #589e96;
+  font-size: 50px;
+  height: 2.5em;
+  font-family: Georgia;
+  transition: opacity 5s;
+  border-radius: 45%
+}
+
+
+#para {
+  top: 80vw;
+  font-family: Georgia;
+  font-size: 1.2em;
+  color: #589e96;
+  transition: opacity 5s
+
+}
+
+.space {
+  visibility: hidden;
+}
+
+@keyframes button {
+  0%{opacity: 1; height: 100vh; width: 100vw;}
+	100%{opacity: 0;height: 0vh; width: 0vw;}
+}
+
+@keyframes button1 {
+    0%{opacity: 1;font-size:50px}
+	100%{opacity: 0;font-size:1px}
+}
+
+
+
+@layer one {
+#originalFrog {
+  width: 10vw;
+}
+
+:root {
+  --mouse-x: 0px;
+  --mouse-y: 0px;
+  --mouse-x1: 0px;
+  --mouse-y2: 0px;
+}
+
+.buttonStyle {
+  position: relative;
+}
+
+#frogPannerButton {
+  top: 30px;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.frogStart {
+  will-change: transform;
+  position: absolute;
+  width: 10vw;
+  left: 50vw;
+  top: 50vh;
+  opacity: 0;
+  transition: width var(--animationTime), left var(--animationTime), top 5s, opacity 5s;
+  
+}
+
+.frogStart1 {
+  will-change: transform;
+  position: absolute;
+  visibility: hidden;
+  width: var(--frogWidth);
+  left: var(--startLeft);
+  top: var(--startTop);
+  transition: opacity 5s, width var(--animationTime), left var(--animationTime), top 10s;
+  animation: fadeIn 2s
+  
+}
+.frogStart2 {
+  will-change: transform;
+  position: absolute;
+  visibility: hidden;
+  width: var(--frogWidth);
+  left: var(--startLeft);
+  top: var(--startTop);
+  transition: opacity 5s, width var(--animationTime), left var(--animationTime), top 10s;
+  animation: fadeIn 2s
+  /* visibility: hidden; */
+}
+
+.frogStart3 {
+  will-change: transform;
+  position: absolute;
+  visibility: hidden; 
+  width: 10vw;
+  left: 40vw;
+  top: 60vh;
+  transition: opacity 5s, width var(--animationTime), left var(--animationTime), top 10s;
+  /* animation: fadeIn 2s */
+  /* visibility: hidden; */
+}
+
+/* .blankClass {
+  color: blue;
+  /* opacity: 1;
+  transition: opacity 5s; */
+/* } */ */
+
+:root {
+  --startLeft: 0vw;
+  --startTop: 0vh;
+  --frogWidth: 1vw;
+  --frogTop: 0vh;
+  --frogTop1: 0vh;
+  --frogTop2: 0vh;
+  --frogLeft: 0vw;
+  --frogLeft1: 0vw;
+  --frogLeft2: 0vh;
+  --animationTime: 5s;
+  --percentage: 50%;
+  --transitionTime: 0s;
+}
+
+.frogLook {
+  will-change: transform;
+  width: var(--frogWidth);
+  left: var(--frogLeft);
+  top: var(--frogTop);
+  /* opacity: 1; */
+  transition:  width var(--animationTime), left var(--animationTime), top 10s, opacity 5s;
+  /*left: var(--mouse-x);*/
+}
+
+.frogLook1 {
+  will-change: transform; 
+  /* width: var(--frogWidth); */
+  left: var(--frogLeft1);
+  top: var(--frogTop1);
+  /* opacity: 1; */
+  /* transition: opacity 5s */
+  /*left: var(--mouse-x);*/
+}
+
+
+
+
+.frogDissapear {
+  /* will-change: opacity; */
+  /* position: absolute; */
+  /* transition: opacity 5s; */
+  /* opacity: 0; */
+  opacity: 0
+}
+
+@keyframes bigFrog {
+  0% {width: 10vw;}
+  50% {width: 50vw;}
+  100% {width: 100vw;}
+}
+
+
+/* .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1
+} */
+
+}
+/* 
+@layer two {
+
+
+ 
+
+
+} */

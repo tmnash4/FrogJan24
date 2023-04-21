@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Frog</title>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="icon" href="media/favicon.ico">
+  <!-- <link rel="script" href="./script.js"> -->
+</head>
+
+
+<body>
+
+  <!-- <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+  </style> -->
+
+<div id="flexDiv">
+    <button id="mainButton"> Click for Frog </button>
+    <div class="space">.</div>
+    <div class="space">.</div>
+    <div class="space">.</div>
+    <div id="para"> Art by Nick Barrett</div>
+
+</div>
+
+<!-- partial:index.partial.html -->
+<div class="overlay"></div>
+<!-- 
+<p>
+  <button onclick="socket.emit('trigger_ending', true)"> End </button>
+</p> -->
+
+
+
+<!-- <button onclick="socket.emit('create', 'room1')"> HELLO </button> -->
+<!-- <button id="joinRoom"> Join Room</button> -->
+<img class="frogStart" id="originalFrog" src="media/froggo4.png"> 
+<!-- <img class="frogStart" id="originalFrog" src="https://tmnash4.github.io/frogmedia/froggy4.png">  -->
+
+<img class="frogStart2" id="secondFrog" src="media/froggy3_new.png"> 
+<img class="frogStart3" id="thirdFrog" onmouseover="moveFrog()" src="media/frog_6.png"> 
+<img class="frogStart1" id="seventhFrog" src="media/froggy2_s.png"> 
+<img class="frogStart2" id="fifthFrog" src="media/frog_51.png">
+<img class="frogStart2" id="fourthFrog"  src="media/froggo5.png"> 
+<img class="frogStart2" id="sixthFrog" src="media/froggo4.png">
+
+
+</meta>
+<!-- partial -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src='tone.js'></script><script  src="./script.js"></script>
+
+</body>
+
+
+
+
+</html>
