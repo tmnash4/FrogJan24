@@ -162,6 +162,100 @@ function moveFrog4() {
   }
 }
 
+function moveFrog() {
+  if (!original.moving) {
+    original.moving = true;
+    original.timer = setTimeout(() => {
+      original.moving = false
+    }, 500)
+  
+   // let randNum = (Math.random() * 10) + 5
+    //console.log(randNum)
+    let randNum2 = (Math.random() * 60) + 1
+    let randNum3 = (Math.random() * 40) + 1
+    // original.style.setProperty('--frogWidth', (randNum) + "vw"); 
+    original.style.setProperty('--frogTop', (randNum3) + "vh");
+    original.style.setProperty('--frogLeft', randNum2 + "vw");
+    original.style.setProperty('--animationTime', randNum1 + "s"); //Sets the variables for the frog movement (to the class "frogLook")
+    let randAudio = Math.floor(Math.random() * audioArray.length)
+    let myFrog1 = new Tone.Player(audioArray[randAudio]).connect(panner); //Creates a new tone player every time the function is run
+    panner.pan.rampTo(getScaledValue(randNum2, 0, 100, -1, 1), (randNum1)) //Moves the panner around
+    Tone.loaded().then(() => {
+    myFrog1.start(); //plays the tone
+    })
+
+    // function addClass() {
+    //   original.classList.add("frogMoveAgain")
+    // }
+    if (original.classList.length == 1) {
+      original.classList.add("frogLook")
+     // original.classList.remove("frogMoveAgain")
+       // original.addEventListener("transitionend", printTest)  //If the class is 1, frogLook will be added. This overrides the duplicate position
+
+      //myFrog.classList.add("blank")
+    } else if (original.classList.contains("frogLook")) {
+      original.classList.remove("frogLook")
+     
+    } 
+
+  
+
+    //socket.emit("frogHover", randNum2)
+  }
+}
+
+
+function touchFrog() {
+  if (!original.moving) {
+    original.moving = true;
+    original.timer = setTimeout(() => {
+      original.moving = false
+    }, 500)
+
+
+    let randNum = (Math.random() * 6) + 5
+    let randNum2 = (Math.random() * 60) + 1
+    let randNum3 = (Math.random() * 50) + 1
+    original4.style.setProperty('--frogWidth', (randNum) + "em"); 
+    original4.style.setProperty('--frogTop', (randNum3) + "vh");
+    original4.style.setProperty('--frogLeft', randNum2 + "vw");
+    original4.style.setProperty('--animationTime', randNum1 + "s"); //Sets the variables for the frog movement (to the class "frogLook")
+    let myFrog1 = new Tone.Player(frogAudio1).connect(panner); //Creates a new tone player every time the function is run
+    panner.pan.rampTo(getScaledValue(randNum2, 0, 100, -1, 1), (randNum1)) //Moves the panner around
+    Tone.loaded().then(() => {
+    myFrog1.start(); //plays the tone
+    })
+    if (original4.classList.length == 1) {
+      original4.classList.add("frogLook")
+    } else if (original4.classList.contains("frogLook")) {
+      original4.classList.remove("frogLook")
+     
+    } 
+  }
+}
+
+var offset = [0,0];
+var isDown = false;
+
+original.addEventListener('mousedown', function(e) {
+isDown = true;
+offset = [
+    original.offsetLeft - e.clientX,
+    original.offsetTop - e.clientY
+ ];
+}, true);
+
+document.addEventListener('mouseup', function() {
+   isDown = false;
+}, true);
+
+document.addEventListener('mousemove', function(e) {
+    event.preventDefault();
+    if (isDown) {
+        original.style.left = (e.clientX + offset[0]) + 'px';
+        original.style.top  = (e.clientY + offset[1]) + 'px';
+   }
+}, true);
 
 
 
@@ -175,7 +269,8 @@ socket.on(('connectToRoom', function(data) {
 //another onhover = frogs in a specific location
 original.addEventListener("touchstart", moveFrog);
 original.addEventListener("mouseover", moveFrog);
-original4.addEventListener("mouseover", moveFrog4)
+original4.addEventListener("mouseover", moveFrog4);
+original.addEventListener("touchmove")
 
 let frogAudio = new Tone.Buffer("media/frog_8.mp3");
 let frogAudio1 = new Tone.Buffer("media/frog_6.wav");
@@ -885,6 +980,7 @@ function hideButtonForServer() {
 document.addEventListener("keyup", (e) => {
   if (e.key == "M") {
     socket.emit("main_display", true);
+    console.log("you are the main")
     // socket.emit("make_hide_button", true);
     mainButton.style.visibility = "hidden"
     frogRoomLimit = 20; //THIS SETS THE NUMBER OF FROGS!!! 
