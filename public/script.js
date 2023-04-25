@@ -127,16 +127,22 @@ var rect = original.getBoundingClientRect();
  if (rect.top < outsideY && rect.top > outsideY -moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
 //  if (rect.left < outsideX && rect.left > outsideX - 30) {
 
-moveFrog()
+  moveFrog()
   console.log("liftoff")
 } else {
-  //console.log(rect.left, outsideX, rect.top, outsideY)
+  
 }
 
+}
+
+function getTouchLocation() {
+  frogMainArray.forEach((clone) => {
+    getCloneLocation(clone)
+  })
 }
 
 body.addEventListener("mouseover", getLocation)
-body.addEventListener("touch", getLocation)
+body.addEventListener("click", getTouchLocation)
 
 function moveFrog() {
   if (!original.moving) {
@@ -578,7 +584,7 @@ function duplicate() {
 
 }
 
-function getLocation() {
+function getLocation1() {
 
   var rect = clone.getBoundingClientRect();
    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
@@ -592,15 +598,49 @@ function getLocation() {
   
   }
 
-  clone.addEventListener("mouseover", getLocation);
-  clone.addEventListener("touch", getLocation)
+  clone.addEventListener("mouseover", getLocation1);
+  clone.addEventListener("touch", getLocation1)
 
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation)
+  body.addEventListener("touch", getLocation1)
 
 
 }
 
+function moveCloneFrog(clone) {
+  let randNum2 = (Math.random() * 60) + 1
+  let randNum3 = (Math.random() * 50) + 1
+  let randNum4 = (Math.random() * 20) + 10
+  clone.style.setProperty('--frogTop1', (randNum2) + "vh");
+  clone.style.setProperty('--frogLeft1', randNum3 + "vw");
+  clone.style.setProperty('--animationTime', randNum4 + "s");
+  clone.myFrog1.start();
+  //panner1.pan.rampTo(getScaledValue(randNum3, 0, 100, -1, 1), (randNum4))
+  if (!clone.classList.contains("frogLook1")) {
+     clone.classList.add("frogLook1")
+  } else if (clone.classList.contains("frogLook1")) {
+    clone.classList.remove("frogLook1")
+}
+  clone.classList.remove("frogDissapear")
+}
+
+function getCloneLocation(clone) {
+  var rect = clone.getBoundingClientRect();
+  let x = rect.left - outsideX;
+  let y = rect.top - outsideY;
+  let dist = Math.sqrt(x * x) + (y * y);
+
+
+   if (dist < 1000) {
+    moveCloneFrog(clone)
+    console.log("liftoff_clone")
+  } else {
+    console.log(dist)
+  }
+ }
+
+
+////END
 
   
   document.addEventListener("keyup", (e) => {
@@ -744,7 +784,7 @@ function getLocation() {
   clone.addEventListener("touch", getLocation)
   clone.addEventListener("mouseover", moveFrog1);
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation)
+  //body.addEventListener("touch", getLocation)
 
 }
 
