@@ -27,6 +27,11 @@ var socket = io();
 
 let frogMainArray = []
 
+let moveAway = 100
+
+let body = document.querySelector("body");
+
+
 let panner = new Tone.Panner(0).connect(mainGain); //This is the panner, it sends ALL the audio to its output. 
 let randNum1 = (Math.random() * 10) + 5 //creates random number
 
@@ -92,6 +97,46 @@ this.onload = () => {
   original.style.opacity = "0"
 }
 
+body.addEventListener("touchstart", detectTouch)
+body.addEventListener("mousemove", detectTouch)
+
+let outsideX;
+let outsideY;
+
+function detectTouch(e) {
+if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel'){
+  var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+  x = touch.pageX;
+  y = touch.pageY;
+  outsideX = x;
+  outsideY = y;
+  //console.log(x, y)
+} else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover'|| e.type=='mouseout' || e.type=='mouseenter' || e.type=='mouseleave') {
+  x = e.clientX;
+  y = e.clientY;
+  outsideX = x;
+  outsideY = y;
+  //console.log(x, y)
+}
+
+}
+
+function getLocation() {
+
+var rect = original.getBoundingClientRect();
+ if (rect.top < outsideY && rect.top > outsideY -moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//  if (rect.left < outsideX && rect.left > outsideX - 30) {
+
+moveFrog()
+  console.log("liftoff")
+} else {
+  //console.log(rect.left, outsideX, rect.top, outsideY)
+}
+
+}
+
+body.addEventListener("mouseover", getLocation)
+body.addEventListener("touch", getLocation)
 
 function moveFrog() {
   if (!original.moving) {
@@ -133,6 +178,7 @@ function moveFrog() {
 
     //socket.emit("frogHover", randNum2)
   }
+ 
 }
 
 
@@ -407,13 +453,13 @@ let frogImage6 = "media/frog_51.png"
 
 //let preAudioArray = [];
 
-let audioArray = [frogAudio, frogAudio1, frogAudio37, frogAudio3, frogAudio29, frogAudio6];
-let audioArrayOrig = [frogAudio, frogAudio1,frogAudio37, frogAudio3, frogAudio29, frogAudio6];
-let audioArray1 = [frogAudio7, frogAudio8, frogAudio9, frogAudio10, frogAudio11, frogAudio12];
-let audioArray2 = [frogAudio13, frogAudio14, frogAudio15, frogAudio16, frogAudio17, frogAudio18];
-let audioArray3 = [frogAudio19, frogAudio20, frogAudio21, frogAudio22, frogAudio23, frogAudio24]; //Check this one out for volume
-let audioArray4 = [frogAudio25, frogAudio26, frogAudio27, frogAudio28, frogAudio29, frogAudio30];
-let audioArray5 = [frogAudio31, frogAudio32, frogAudio33, frogAudio35, frogAudio35, frogAudio36];
+let audioArray = [frogAudio, frogAudio1, frogAudio37, frogAudio3, frogAudio29, frogAudio6, frogAudio31, frogAudio32, frogAudio33, frogAudio35, frogAudio35, frogAudio36];
+let audioArrayOrig = [frogAudio, frogAudio1,frogAudio37, frogAudio3, frogAudio29, frogAudio6, frogAudio31, frogAudio32, frogAudio33, frogAudio35, frogAudio35, frogAudio36];
+let audioArray1 = [frogAudio7, frogAudio8, frogAudio9, frogAudio10, frogAudio11, frogAudio12, frogAudio13, frogAudio14, frogAudio15, frogAudio16, frogAudio17, frogAudio18];
+let audioArray2 = [frogAudio13, frogAudio14, frogAudio15, frogAudio16, frogAudio17, frogAudio18, frogAudio19, frogAudio20, frogAudio21, frogAudio22, frogAudio23, frogAudio24];
+let audioArray3 = [frogAudio19, frogAudio20, frogAudio21, frogAudio22, frogAudio23, frogAudio24,frogAudio14, frogAudio15,frogAudio3, frogAudio29]; //Check this one out for volume
+let audioArray4 = [frogAudio25, frogAudio26, frogAudio27, frogAudio28, frogAudio29, frogAudio30, frogAudio16, frogAudio17, frogAudio18, frogAudio19, frogAudio20];
+let audioArray5 = [frogAudio31, frogAudio32, frogAudio33, frogAudio35, frogAudio35, frogAudio36,frogAudio, frogAudio1, frogAudio37, frogAudio3, frogAudio29, frogAudio6, frogAudio31];
 
 let audioArrayFav = [frogAudio34, frogAudio8, frogAudio12, frogAudio5, frogAudio13, frogAudio16, frogAudio27 ]
 
@@ -487,18 +533,18 @@ function duplicate() {
       clone.myFrog1.start(); //start the audio 
    })
 
-   clone.addEventListener('touchmove', function(event) {
-    // If there's exactly one finger inside this element
-    if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      // Place element where the finger is
-      clone.style.left = (touch.pageX) + 'px';
-      clone.style.top = (touch.pageY) + 'px';
-    }
-    event.preventDefault()
-    console.log("Its working")
-  }, false);
-  clone.onmouseover = function moveFrog1() {
+  //  clone.addEventListener('touchmove', function(event) {
+  //   // If there's exactly one finger inside this element
+  //   if (event.targetTouches.length == 1) {
+  //     var touch = event.targetTouches[0];
+  //     // Place element where the finger is
+  //     clone.style.left = (touch.pageX) + 'px';
+  //     clone.style.top = (touch.pageY) + 'px';
+  //   }
+  //   event.preventDefault()
+  //   console.log("Its working")
+  // }, false);
+   function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       //console.log(randNum)
       let randNum2 = (Math.random() * 60) + 1
@@ -517,32 +563,12 @@ function duplicate() {
 
       if (!clone.classList.contains("frogLook1")) {
          clone.classList.add("frogLook1")
-         clone.addEventListener('touchmove', function(event) {
-          // If there's exactly one finger inside this element
-          if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            // Place element where the finger is
-            clone.style.left = (touch.pageX) + 'px';
-            clone.style.top = (touch.pageY) + 'px';
-          }
-          event.preventDefault()
-          console.log("Its working")
-        }, false);
+    
         //  clone.style.setProperty('--startLeft', randNum2 + "vw");
         //  clone.style.setProperty('--startTop', randNum3 + "vh");
       } else if (clone.classList.contains("frogLook1")) {
         clone.classList.remove("frogLook1")
-        clone.addEventListener('touchmove', function(event) {
-          // If there's exactly one finger inside this element
-          if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            // Place element where the finger is
-            clone.style.left = (touch.pageX) + 'px';
-            clone.style.top = (touch.pageY) + 'px';
-          }
-          event.preventDefault()
-          console.log("Its working")
-        }, false);
+        
         // clone.style.setProperty('--startLeft', randNum2 + "vw");
         // clone.style.setProperty('--startTop', randNum3 + "vh");
       
@@ -551,6 +577,28 @@ function duplicate() {
       clone.classList.remove("frogDissapear")
 
 }
+
+function getLocation() {
+
+  var rect = clone.getBoundingClientRect();
+   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+  
+  moveFrog1()
+    console.log("liftoff")
+  } else {
+    //console.log(rect.left, outsideX, rect.top, outsideY)
+  }
+  
+  }
+
+  clone.addEventListener("mouseover", getLocation);
+  clone.addEventListener("touch", getLocation)
+
+  clone.addEventListener("touch", moveFrog1)
+  body.addEventListener("touch", getLocation)
+
+
 }
 
 
@@ -642,18 +690,8 @@ function duplicateTwo(limit = frogLimit, frogUnit = twoLocal) {
   Tone.loaded().then(() => {
       clone.myFrog1.start(); //start the audio 
    })
-   clone.addEventListener('touchmove', function(event) {
-    // If there's exactly one finger inside this element
-    if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      // Place element where the finger is
-      clone.style.left = (touch.pageX) + 'px';
-      clone.style.top = (touch.pageY) + 'px';
-    }
-    event.preventDefault()
-    console.log("Its working")
-  }, false);
-  clone.onmouseover = function moveFrog1() {
+  
+  function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       //console.log(randNum)
       let randNum2 = (Math.random() * 60) + 1
@@ -670,30 +708,10 @@ function duplicateTwo(limit = frogLimit, frogUnit = twoLocal) {
 
       if (!clone.classList.contains("frogLook1")) {
         clone.classList.add("frogLook1")
-        clone.addEventListener('touchmove', function(event) {
-          // If there's exactly one finger inside this element
-          if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            // Place element where the finger is
-            clone.style.left = (touch.pageX) + 'px';
-            clone.style.top = (touch.pageY) + 'px';
-          }
-          event.preventDefault()
-          console.log("Its working")
-        }, false);
+  
      } else if (clone.classList.contains("frogLook1")) {
        clone.classList.remove("frogLook1")
-       clone.addEventListener('touchmove', function(event) {
-        // If there's exactly one finger inside this element
-        if (event.targetTouches.length == 1) {
-          var touch = event.targetTouches[0];
-          // Place element where the finger is
-          clone.style.left = (touch.pageX) + 'px';
-          clone.style.top = (touch.pageY) + 'px';
-        }
-        event.preventDefault()
-        console.log("Its working")
-      }, false);
+      
       
   }
     // if (clone.classList.contains = "frog") {
@@ -708,6 +726,25 @@ for (o=0; o<twoLocal.length; o++) {
   console.log(twoLocal[o].id)
   twoLocal[o].addEventListener("click", emitFrog)
 }
+function getLocation() {
+
+  var rect = clone.getBoundingClientRect();
+   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+  
+  moveFrog1()
+    console.log("liftoff")
+  } else {
+    //console.log(rect.left, outsideX, rect.top, outsideY)
+  }
+  
+  }
+
+  clone.addEventListener("mouseover", getLocation);
+  clone.addEventListener("touch", getLocation)
+  clone.addEventListener("mouseover", moveFrog1);
+  clone.addEventListener("touch", moveFrog1)
+  body.addEventListener("touch", getLocation)
 
 }
 
@@ -746,18 +783,8 @@ function duplicateThree(limit = frogLimit, frogUnit = threeLocal) {
   Tone.loaded().then(() => {
       clone.myFrog1.start(); //start the audio 
    })
-   clone.addEventListener('touchmove', function(event) {
-    // If there's exactly one finger inside this element
-    if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      // Place element where the finger is
-      clone.style.left = (touch.pageX) + 'px';
-      clone.style.top = (touch.pageY) + 'px';
-    }
-    event.preventDefault()
-    console.log("Its working")
-  }, false);
-  clone.onmouseover = function moveFrog1() {
+   
+  function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       let randNum2 = (Math.random() * 50) + 1
       let randNum3 = (Math.random() * 40) + 1
@@ -773,18 +800,7 @@ function duplicateThree(limit = frogLimit, frogUnit = threeLocal) {
         clone.classList.add("frogLook1")
      } else if (clone.classList.contains("frogLook1")) {
        clone.classList.remove("frogLook1")
-       clone.addEventListener('touchmove', function(event) {
-        // If there's exactly one finger inside this element
-        if (event.targetTouches.length == 1) {
-          var touch = event.targetTouches[0];
-          // Place element where the finger is
-          clone.style.left = (touch.pageX) + 'px';
-          clone.style.top = (touch.pageY) + 'px';
-        }
-        event.preventDefault()
-        console.log("Its working")
-      }, false);
-      
+       
   }
   clone.classList.remove("frogDissapear")
 
@@ -795,7 +811,25 @@ for (o=0; o<threeLocal.length; o++) {
   console.log(threeLocal[o].id)
   threeLocal[o].addEventListener("click", emitFrog)
 }
+function getLocation() {
 
+  var rect = clone.getBoundingClientRect();
+   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+  
+  moveFrog1()
+    console.log("liftoff")
+  } else {
+    //console.log(rect.left, outsideX, rect.top, outsideY)
+  }
+  
+  }
+
+  clone.addEventListener("mouseover", getLocation);
+  clone.addEventListener("touch", getLocation)
+  clone.addEventListener("mouseover", moveFrog1);
+  clone.addEventListener("touch", moveFrog1)
+  body.addEventListener("touch", getLocation)
 }
 
 let fourLocal = [];
@@ -840,18 +874,9 @@ function duplicateFour(limit = frogLimit, frogUnit = fourLocal) {
   Tone.loaded().then(() => {
       clone.myFrog1.start(); //start the audio 
    })
-   clone.addEventListener('touchmove', function(event) {
-    // If there's exactly one finger inside this element
-    if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      // Place element where the finger is
-      clone.style.left = (touch.pageX) + 'px';
-      clone.style.top = (touch.pageY) + 'px';
-    }
-    event.preventDefault()
-    console.log("Its working")
-  }, false);
-  clone.onmouseover = function moveFrog1() {
+   
+
+  function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       //console.log(randNum)
       let randNum2 = (Math.random() * 60) + 1
@@ -868,34 +893,16 @@ function duplicateFour(limit = frogLimit, frogUnit = fourLocal) {
 
       if (!clone.classList.contains("frogLook1")) {
         clone.classList.add("frogLook1")
-        clone.addEventListener('touchmove', function(event) {
-          // If there's exactly one finger inside this element
-          if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            // Place element where the finger is
-            clone.style.left = (touch.pageX) + 'px';
-            clone.style.top = (touch.pageY) + 'px';
-          }
-          event.preventDefault()
-          console.log("Its working")
-        }, false);
+        
        //  clone.style.setProperty('--startLeft', randNum2 + "vw");
        //  clone.style.setProperty('--startTop', randNum3 + "vh");
      } else if (clone.classList.contains("frogLook1")) {
        clone.classList.remove("frogLook1")
-       clone.addEventListener('touchmove', function(event) {
-        // If there's exactly one finger inside this element
-        if (event.targetTouches.length == 1) {
-          var touch = event.targetTouches[0];
-          // Place element where the finger is
-          clone.style.left = (touch.pageX) + 'px';
-          clone.style.top = (touch.pageY) + 'px';
-        }
-        event.preventDefault()
-        console.log("Its working")
-      }, false);
+       
   }
   clone.classList.remove("frogDissapear")
+
+  
 
 }
 frogUnit.push(clone);
@@ -904,7 +911,25 @@ for (o=0; o<fourLocal.length; o++) {
   fourLocal[o].addEventListener("click", emitFrog)
 }
 clone.classList.remove("frogDissapear")
+function getLocation() {
 
+  var rect = clone.getBoundingClientRect();
+   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+  
+  moveFrog1()
+    console.log("liftoff")
+  } else {
+    //console.log(rect.left, outsideX, rect.top, outsideY)
+  }
+  
+  }
+
+  clone.addEventListener("mouseover", getLocation);
+  clone.addEventListener("touch", getLocation)
+  clone.addEventListener("mouseover", moveFrog1);
+  clone.addEventListener("touch", moveFrog1)
+  body.addEventListener("touch", getLocation)
 }
 
 
@@ -951,18 +976,8 @@ function duplicateFive(limit = frogLimit, frogUnit = fiveLocal) {
   Tone.loaded().then(() => {
       clone.myFrog1.start(); //start the audio 
    })
-   clone.addEventListener('touchmove', function(event) {
-    // If there's exactly one finger inside this element
-    if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      // Place element where the finger is
-      clone.style.left = (touch.pageX) + 'px';
-      clone.style.top = (touch.pageY) + 'px';
-    }
-    event.preventDefault()
-    console.log("Its working")
-  }, false);
-  clone.onmouseover = function moveFrog1() {
+  
+  function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       //console.log(randNum)
       let randNum2 = (Math.random() * 60) + 1
@@ -979,32 +994,12 @@ function duplicateFive(limit = frogLimit, frogUnit = fiveLocal) {
 
       if (!clone.classList.contains("frogLook1")) {
         clone.classList.add("frogLook1")
-        clone.addEventListener('touchmove', function(event) {
-          // If there's exactly one finger inside this element
-          if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            // Place element where the finger is
-            clone.style.left = (touch.pageX) + 'px';
-            clone.style.top = (touch.pageY) + 'px';
-          }
-          event.preventDefault()
-          console.log("Its working")
-        }, false);
+        
        //  clone.style.setProperty('--startLeft', randNum2 + "vw");
        //  clone.style.setProperty('--startTop', randNum3 + "vh");
      } else if (clone.classList.contains("frogLook1")) {
        clone.classList.remove("frogLook1")
-       clone.addEventListener('touchmove', function(event) {
-        // If there's exactly one finger inside this element
-        if (event.targetTouches.length == 1) {
-          var touch = event.targetTouches[0];
-          // Place element where the finger is
-          clone.style.left = (touch.pageX) + 'px';
-          clone.style.top = (touch.pageY) + 'px';
-        }
-        event.preventDefault()
-        console.log("Its working")
-      }, false);
+      
   }
   clone.classList.remove("frogDissapear")
 
@@ -1017,6 +1012,25 @@ frogMainArray.push(clone)
 for (o=0; o<fiveLocal.length; o++) {
   fiveLocal[o].addEventListener("click", emitFrog)
 }
+function getLocation() {
+
+  var rect = clone.getBoundingClientRect();
+   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+  
+  moveFrog1()
+    console.log("liftoff")
+  } else {
+    //console.log(rect.left, outsideX, rect.top, outsideY)
+  }
+  
+  }
+
+  clone.addEventListener("mouseover", getLocation);
+  clone.addEventListener("touch", getLocation)
+  clone.addEventListener("mouseover", moveFrog1);
+  clone.addEventListener("touch", moveFrog1)
+  body.addEventListener("touch", getLocation)
 
 }
 
@@ -1062,18 +1076,8 @@ function duplicateSix(limit = frogLimit, frogUnit = sixLocal) {
   Tone.loaded().then(() => {
       clone.myFrog1.start(); //start the audio 
    })
-   clone.addEventListener('touchmove', function(event) {
-    // If there's exactly one finger inside this element
-    if (event.targetTouches.length == 1) {
-      var touch = event.targetTouches[0];
-      // Place element where the finger is
-      clone.style.left = (touch.pageX) + 'px';
-      clone.style.top = (touch.pageY) + 'px';
-    }
-    event.preventDefault()
-    console.log("Its working")
-  }, false);
-  clone.onmouseover = function moveFrog1() {
+  
+   function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       //console.log(randNum)
       let randNum2 = (Math.random() * 60) + 1
@@ -1090,40 +1094,38 @@ function duplicateSix(limit = frogLimit, frogUnit = sixLocal) {
 
       if (!clone.classList.contains("frogLook1")) {
         clone.classList.add("frogLook1")
-        clone.addEventListener('touchmove', function(event) {
-          // If there's exactly one finger inside this element
-          if (event.targetTouches.length == 1) {
-            var touch = event.targetTouches[0];
-            // Place element where the finger is
-            clone.style.left = (touch.pageX) + 'px';
-            clone.style.top = (touch.pageY) + 'px';
-          }
-          event.preventDefault()
-          console.log("Its working")
-        }, false);
+       
         
        //  clone.style.setProperty('--startLeft', randNum2 + "vw");
        //  clone.style.setProperty('--startTop', randNum3 + "vh");
      } else if (clone.classList.contains("frogLook1")) {
        clone.classList.remove("frogLook1")
-       clone.addEventListener('touchmove', function(event) {
-        // If there's exactly one finger inside this element
-        if (event.targetTouches.length == 1) {
-          var touch = event.targetTouches[0];
-          // Place element where the finger is
-          clone.style.left = (touch.pageX) + 'px';
-          clone.style.top = (touch.pageY) + 'px';
-        }
-        event.preventDefault()
-        console.log("Its working")
-      }, false);
+       
   }
   clone.classList.remove("frogDissapear")
 
-    // if (clone.classList.contains = "frog") {
-    //   console.log("working!")
-    // }
+   
 }
+
+function getLocation() {
+
+  var rect = clone.getBoundingClientRect();
+   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+  
+  moveFrog1()
+    console.log("liftoff")
+  } else {
+    //console.log(rect.left, outsideX, rect.top, outsideY)
+  }
+  
+  }
+
+  clone.addEventListener("mouseover", getLocation);
+  clone.addEventListener("touch", getLocation)
+  clone.addEventListener("mouseover", moveFrog1);
+  clone.addEventListener("touch", moveFrog1)
+  body.addEventListener("touch", getLocation)
 frogUnit.push(clone);
 frogMainArray.push(clone);
 for (o=0; o<sixLocal.length; o++) {
@@ -1154,7 +1156,6 @@ socket.on("the_end", () => {
 
 
  
-let body = document.querySelector("body");
 
 
 socket.on("hide_button", () => {
