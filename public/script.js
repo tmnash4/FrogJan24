@@ -47,6 +47,10 @@ let frogLimit = 10;
 let frogRoomLimit = 3;
 
 
+$("body").ripples({
+  resolution: 512,
+  perturbance: 0.01,
+});
 
 
 
@@ -121,19 +125,19 @@ if(e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.
 
 }
 
-function getLocation() {
+// function getLocation() {
 
-var rect = original.getBoundingClientRect();
- if (rect.top < outsideY && rect.top > outsideY -moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-//  if (rect.left < outsideX && rect.left > outsideX - 30) {
+// var rect = original.getBoundingClientRect();
+//  if (rect.top < outsideY && rect.top > outsideY -moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+// //  if (rect.left < outsideX && rect.left > outsideX - 30) {
 
-  moveFrog()
-  console.log("liftoff")
-} else {
+//   moveFrog()
+//   console.log("liftoff")
+// } else {
   
-}
+// }
 
-}
+// }
 
 function getTouchLocation() {
   frogMainArray.forEach((clone) => {
@@ -141,7 +145,9 @@ function getTouchLocation() {
   })
 }
 
-body.addEventListener("mouseover", getLocation)
+
+
+//body.addEventListener("mouseover", getLocation)
 body.addEventListener("click", getTouchLocation)
 
 function moveFrog() {
@@ -584,25 +590,25 @@ function duplicate() {
 
 }
 
-function getLocation1() {
+// function getLocation1() {
 
-  var rect = clone.getBoundingClientRect();
-   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+//   var rect = clone.getBoundingClientRect();
+//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
   
-  moveFrog1()
-    console.log("liftoff")
-  } else {
-    //console.log(rect.left, outsideX, rect.top, outsideY)
-  }
+//   moveFrog1()
+//     console.log("liftoff")
+//   } else {
+//     //console.log(rect.left, outsideX, rect.top, outsideY)
+//   }
   
-  }
+//   }
 
-  clone.addEventListener("mouseover", getLocation1);
-  clone.addEventListener("touch", getLocation1)
-
+  //clone.addEventListener("mouseover", getLocation1);
+  //clone.addEventListener("touch", getLocation1)
+  clone.addEventListener("mouseover", moveFrog1)
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation1)
+  //body.addEventListener("touch", getLocation1)
 
 
 }
@@ -631,11 +637,11 @@ function getCloneLocation(clone) {
   let dist = Math.sqrt(x * x) + (y * y);
 
 
-   if (dist < 1000) {
+   if (dist < 2000) {
     moveCloneFrog(clone)
     console.log("liftoff_clone")
   } else {
-    console.log(dist)
+    //console.log(dist)
   }
  }
 
@@ -766,22 +772,22 @@ for (o=0; o<twoLocal.length; o++) {
   console.log(twoLocal[o].id)
   twoLocal[o].addEventListener("click", emitFrog)
 }
-function getLocation() {
+// function getLocation() {
 
-  var rect = clone.getBoundingClientRect();
-   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+//   var rect = clone.getBoundingClientRect();
+//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
   
-  moveFrog1()
-    console.log("liftoff")
-  } else {
-    //console.log(rect.left, outsideX, rect.top, outsideY)
-  }
+//   moveFrog1()
+//     console.log("liftoff")
+//   } else {
+//     //console.log(rect.left, outsideX, rect.top, outsideY)
+//   }
   
-  }
+//   }
 
-  clone.addEventListener("mouseover", getLocation);
-  clone.addEventListener("touch", getLocation)
+  //clone.addEventListener("mouseover", getLocation);
+  //clone.addEventListener("touch", getLocation)
   clone.addEventListener("mouseover", moveFrog1);
   clone.addEventListener("touch", moveFrog1)
   //body.addEventListener("touch", getLocation)
@@ -851,25 +857,25 @@ for (o=0; o<threeLocal.length; o++) {
   console.log(threeLocal[o].id)
   threeLocal[o].addEventListener("click", emitFrog)
 }
-function getLocation() {
+// function getLocation() {
 
-  var rect = clone.getBoundingClientRect();
-   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+//   var rect = clone.getBoundingClientRect();
+//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
   
-  moveFrog1()
-    console.log("liftoff")
-  } else {
-    //console.log(rect.left, outsideX, rect.top, outsideY)
-  }
+//   moveFrog1()
+//     console.log("liftoff")
+//   } else {
+//     //console.log(rect.left, outsideX, rect.top, outsideY)
+//   }
   
-  }
+//   }
 
-  clone.addEventListener("mouseover", getLocation);
-  clone.addEventListener("touch", getLocation)
+ // clone.addEventListener("mouseover", getLocation);
+  //clone.addEventListener("touch", getLocation)
   clone.addEventListener("mouseover", moveFrog1);
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation)
+  //body.addEventListener("touch", getLocation)
 }
 
 let fourLocal = [];
@@ -951,25 +957,25 @@ for (o=0; o<fourLocal.length; o++) {
   fourLocal[o].addEventListener("click", emitFrog)
 }
 clone.classList.remove("frogDissapear")
-function getLocation() {
+// function getLocation() {
 
-  var rect = clone.getBoundingClientRect();
-   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+//   var rect = clone.getBoundingClientRect();
+//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
   
-  moveFrog1()
-    console.log("liftoff")
-  } else {
-    //console.log(rect.left, outsideX, rect.top, outsideY)
-  }
+//   moveFrog1()
+//     console.log("liftoff")
+//   } else {
+//     //console.log(rect.left, outsideX, rect.top, outsideY)
+//   }
   
-  }
+//   }
 
-  clone.addEventListener("mouseover", getLocation);
-  clone.addEventListener("touch", getLocation)
+  //clone.addEventListener("mouseover", getLocation);
+  //clone.addEventListener("touch", getLocation)
   clone.addEventListener("mouseover", moveFrog1);
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation)
+  //body.addEventListener("touch", getLocation)
 }
 
 
@@ -1052,25 +1058,25 @@ frogMainArray.push(clone)
 for (o=0; o<fiveLocal.length; o++) {
   fiveLocal[o].addEventListener("click", emitFrog)
 }
-function getLocation() {
+// function getLocation() {
 
-  var rect = clone.getBoundingClientRect();
-   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+//   var rect = clone.getBoundingClientRect();
+//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
   
-  moveFrog1()
-    console.log("liftoff")
-  } else {
-    //console.log(rect.left, outsideX, rect.top, outsideY)
-  }
+//   moveFrog1()
+//     console.log("liftoff")
+//   } else {
+//     //console.log(rect.left, outsideX, rect.top, outsideY)
+//   }
   
-  }
+//   }
 
-  clone.addEventListener("mouseover", getLocation);
-  clone.addEventListener("touch", getLocation)
+  //clone.addEventListener("mouseover", getLocation);
+  //clone.addEventListener("touch", getLocation)
   clone.addEventListener("mouseover", moveFrog1);
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation)
+  //body.addEventListener("touch", getLocation)
 
 }
 
@@ -1147,25 +1153,25 @@ function duplicateSix(limit = frogLimit, frogUnit = sixLocal) {
    
 }
 
-function getLocation() {
+// function getLocation() {
 
-  var rect = clone.getBoundingClientRect();
-   if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-  //  if (rect.left < outsideX && rect.left > outsideX - 30) {
+//   var rect = clone.getBoundingClientRect();
+//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
+//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
   
-  moveFrog1()
-    console.log("liftoff")
-  } else {
-    //console.log(rect.left, outsideX, rect.top, outsideY)
-  }
+//   moveFrog1()
+//     console.log("liftoff")
+//   } else {
+//     //console.log(rect.left, outsideX, rect.top, outsideY)
+//   }
   
-  }
+//   }
 
-  clone.addEventListener("mouseover", getLocation);
-  clone.addEventListener("touch", getLocation)
+  //clone.addEventListener("mouseover", getLocation);
+  //clone.addEventListener("touch", getLocation)
   clone.addEventListener("mouseover", moveFrog1);
   clone.addEventListener("touch", moveFrog1)
-  body.addEventListener("touch", getLocation)
+ // body.addEventListener("touch", getLocation)
 frogUnit.push(clone);
 frogMainArray.push(clone);
 for (o=0; o<sixLocal.length; o++) {
