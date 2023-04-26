@@ -47,10 +47,10 @@ let frogLimit = 10;
 let frogRoomLimit = 3;
 
 
-$("body").ripples({
-  resolution: 512,
-  perturbance: 0.01,
-});
+// $("body").ripples({
+//   resolution: 124,
+//   perturbance: 0.01,
+// });
 
 
 
