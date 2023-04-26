@@ -1286,7 +1286,7 @@ socket.on("end_piece", () =>  {
 // if ()
 function duplicateSection() {
   mainButton.style.opacity = "1"
-  mainButton.innerHTML = "Look, a new frog! Try clicking it!";
+  mainButton.innerHTML = "Try clicking on a frog!";
   mainButton.style.fontSize = "6vw"
   original4.style.visibility = "visible";
   original4.style.animation = "fadeIn 5s";
