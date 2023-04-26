@@ -694,6 +694,13 @@ function getCloneLocation(clone) {
    
         // })
       }
+     } else if (e.key == "ArrowUp") {
+      frogLimit++
+      frogRoomLimit++
+
+     } else if (e.key == "ArrowDown") {
+      frogLimit--
+      frogRoomLimit--
      }
   });
 
