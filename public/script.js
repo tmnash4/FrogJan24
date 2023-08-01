@@ -679,7 +679,7 @@ function getCloneLocation(clone) {
       // })
      } else if (e.key == "r") {
       cl.classList.remove("frogDissapear")
-     } else if (e.key == "q") {
+     } else if (e.key == "d") {
       // let indClone = document.getElementById(`originalFrog${l}`);
       for(l=0;l<frogMainArray.length;l++) {
         frogMainArray[l].style.animation = "fadeOut 1s"
@@ -1293,28 +1293,32 @@ function duplicateSection() {
   original4.style.visibility = "visible";
   original4.style.animation = "fadeIn 5s";
   // mainButton.style.fontSize = "5vw"
-  para.style.visibility = "hidden"
+  // para.style.visibility = "hidden"
 
 }
 
-function hideButtonForServer() {
-  
-}
+
+
+
+
 
 document.addEventListener("keyup", (e) => {
   if (e.key == "ArrowUp") {
     socket.emit("main_display", true);
+    setTimeout(() => {
+      socket.emit("make_show_button", true);
+    }, 1000)
     // console.log("you are the main")
     // socket.emit("make_hide_button", true);
     mainButton.style.visibility = "hidden"
     frogRoomLimit = 20; //THIS SETS THE NUMBER OF FROGS!!! 
-  } else if (e.key == "ArrowUp") {
+  } else if (e.key == "h") {
     socket.emit("make_show_button", true);
     
   } else if (e.key == "P") {
     socket.emit("make_hide_button", true)
 
-  } else if (e.key == "K") {
+  } else if (e.key == "R") {
     socket.emit("restart_piece", true);
   } else if (e.key == "Q") {
      oneBigFrog()
