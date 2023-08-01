@@ -2,7 +2,7 @@
 
 const express = require('express')
 const app = express()
-const port = 8500
+const port = 8501
 
 const http = require('http');
 const server = http.createServer(app);
@@ -91,7 +91,7 @@ io.on('connection', (socket) => {
 
 
 else if (idArray.length > 3 && idArray.length <= 5) {
-    socket.join('room2');
+      socket.join('room2');
       console.log("room2");
       socket.emit("room", 2)
       socket.on("testing", () => {

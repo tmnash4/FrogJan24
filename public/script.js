@@ -661,7 +661,7 @@ function getCloneLocation(clone) {
       //cloneArray[i].style.opacity = 1
     })
   }
-    if (e.key == "D") {
+    if (e.key == "ArrowDown") {
       cloneArray.shift().remove()
     } else if (e.key == "s") {
       cl.classList.remove("moveAgain")
@@ -694,11 +694,12 @@ function getCloneLocation(clone) {
    
         // })
       }
-     } else if (e.key == "ArrowUp") {
+     } else if (e.key == "+") {
       frogLimit++
       frogRoomLimit++
+      console.log("hello!")
 
-     } else if (e.key == "ArrowDown") {
+     } else if (e.key == "-") {
       frogLimit--
       frogRoomLimit--
      }
@@ -1196,7 +1197,7 @@ function spawnFrog() {
 
 
 document.addEventListener("keydown", (e) => {
-  if (e.key == "d") {
+  if (e.key == "ArrowUp") {
     duplicate()
   }
 })
@@ -1285,12 +1286,13 @@ socket.on("end_piece", () =>  {
 
 // if ()
 function duplicateSection() {
-  mainButton.style.opacity = "1"
-  mainButton.innerHTML = "Try clicking on a frog!";
-  mainButton.style.fontSize = "6vw"
+  // mainButton.style.opacity = "1"
+  // mainButton.innerHTML = "Try clicking on a frog!";
+  // mainButton.style.fontSize = "6vw"
+  // mainButton.style.display = "none";
   original4.style.visibility = "visible";
   original4.style.animation = "fadeIn 5s";
-  mainButton.style.fontSize = "5vw"
+  // mainButton.style.fontSize = "5vw"
   para.style.visibility = "hidden"
 
 }
@@ -1300,13 +1302,13 @@ function hideButtonForServer() {
 }
 
 document.addEventListener("keyup", (e) => {
-  if (e.key == "M") {
+  if (e.key == "ArrowUp") {
     socket.emit("main_display", true);
-    console.log("you are the main")
+    // console.log("you are the main")
     // socket.emit("make_hide_button", true);
     mainButton.style.visibility = "hidden"
     frogRoomLimit = 20; //THIS SETS THE NUMBER OF FROGS!!! 
-  } else if (e.key == "L") {
+  } else if (e.key == "ArrowUp") {
     socket.emit("make_show_button", true);
     
   } else if (e.key == "P") {
@@ -1317,13 +1319,13 @@ document.addEventListener("keyup", (e) => {
   } else if (e.key == "Q") {
      oneBigFrog()
 
-  } else if (e.key == "A") {
+  } else if (e.key == "e") {
     
     socket.emit("fade_to_black", true);
     endPiece()
      //make a variable for this 
   } else if (e.key == "c") {
-    console.log(":P")
+    // console.log(":P")
     changeSound();
     socket.emit("change_sound", () => {
 
@@ -1347,7 +1349,7 @@ socket.on("set_section", (data) => {
   endPiece()
   console.log("Its ending")
   } else if (data =="restart") {
-    console.log("#%^%@$#^%$@")
+    // console.log("#%^%@$#^%$@")
     restartPiece()
   //call a function that does all the things needed to restart
   } else if (data =="start") {
@@ -1358,13 +1360,13 @@ socket.on("set_section", (data) => {
 socket.on("set_section_again", (data) => {
   mainButton.innerHTML = "Click for Frog"
   mainButton.style.visibility = "visible"
-  original4.style.visibility = "hidden";
+  // original4.style.visibility = "hidden";
   }
 )
 
 socket.on("set_sound_bank", () => {
   changeSound()
-  console.log(':o)')
+  // console.log(':o)')
 })
 
 

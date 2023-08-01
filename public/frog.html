@@ -653,7 +653,7 @@ function duplicate() {
 
 
   
-  document.addEventListener("keyup", (e) => {
+  document.addEventListener("keywdown", (e) => {
     let idNum = Math.floor(Math.random() * cloneArray.length);
     //let cloneId = document.getElementById(`originalFrog${idNum}`);
     let cl = cloneArray[idNum]
@@ -666,6 +666,7 @@ function duplicate() {
     })
   }
     if (e.key == "D") {
+      console.log('hhf')
       cloneArray.shift().remove()
     } else if (e.key == "s") {
       cl.classList.remove("moveAgain")
