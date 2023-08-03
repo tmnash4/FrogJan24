@@ -661,7 +661,7 @@ function getCloneLocation(clone) {
       //cloneArray[i].style.opacity = 1
     })
   }
-    if (e.key == "ArrowDown") {
+    if (e.key == "ArrowDown" || e.key == "ArrowLeft") {
       cloneArray.shift().remove()
     } else if (e.key == "s") {
       cl.classList.remove("moveAgain")
@@ -697,7 +697,7 @@ function getCloneLocation(clone) {
      } else if (e.key == "+") {
       frogLimit++
       frogRoomLimit++
-      console.log("hello!")
+      // console.log("hello!")
 
      } else if (e.key == "-") {
       frogLimit--
@@ -1197,7 +1197,7 @@ function spawnFrog() {
 
 
 document.addEventListener("keydown", (e) => {
-  if (e.key == "ArrowUp") {
+  if (e.key == "ArrowUp" || e.key == "ArrowDown") {
     duplicate()
   }
 })
