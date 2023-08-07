@@ -61,6 +61,12 @@ let para = document.getElementById("para")
 
 function startPiece() {
   mainButton.style.opacity = "0";
+  if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
+    socket.emit("main_display", true);
+    console.log("hello")
+   
+  }
+  duplicateSection()
   playBackground();
   mainGain.gain.rampTo(1, 3);
   para.style.opacity = "0"
@@ -1303,7 +1309,7 @@ function duplicateSection() {
 
 
 document.addEventListener("keyup", (e) => {
-  if (e.key == "ArrowUp") {
+  if (e.key == "ArrowUp" || e.key == "ArrowRight") {
     socket.emit("main_display", true);
     setTimeout(() => {
       socket.emit("make_show_button", true);
