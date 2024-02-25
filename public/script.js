@@ -13,12 +13,10 @@ mainGain.gain = 1
 
 let frogBackBuffer = new Tone.Buffer("media/background3.mp3")
 let frogBack = new Tone.Player(frogBackBuffer)
-<<<<<<< Updated upstream
 frogBack.connect(mainGain);
 frogBack.loop = true;	
-=======
+
 frogBack.toDestination()
->>>>>>> Stashed changes
 
 async function playBackground() {
   await Tone.start()
@@ -34,7 +32,6 @@ var socketName = "default";
 var socket = io();  
 
 let frogMainArray = []
-let mainButton = document.getElementById("mainButton");
 let name = document.getElementById("name"); 
 let name1 = document.getElementById("name1"); 
 let name2 = document.getElementById("name2")
@@ -47,10 +44,22 @@ let para = document.getElementById("para")
 let myInput = document.getElementById("myInput");
 let myInputLabel = document.getElementById("myInputLabel")
 let submit = document.querySelector("#submit")
-
+let localArray;
+let mainButton = document.getElementById("mainButton")
 
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  // mainButton.addEventListener("click", () => {
+  //   // socket.emit("main_display", true);
+  //   mainButton.style.visibility = "hidden"
+  //   frogRoomLimit = 5;
+  //   console.log("Hello")
+  //   startAudio()
+  //   playBackground()
+  //   startPiece()
+  //   original.style.visibility = "visible"
 
+   
+  // })
 
 
 
@@ -109,12 +118,10 @@ let frogRoomLimit = 3;
 let roomNumber = 0;
 
 
-<<<<<<< Updated upstream
 // $("body").ripples({
 //   resolution: 124,
 //   perturbance: 0.01,
 // });
-=======
 function nameFrog() {
   myInput.style.visibility = "visible";
   submit.style.visibility = "visible"
@@ -122,7 +129,6 @@ function nameFrog() {
   mainButton.style.display = "none";
   para.style.display = "none"
 }
->>>>>>> Stashed changes
 
 // myInput.addEventListener('keydown', (e) => {
 //   if (e.key == "Enter") {
@@ -154,7 +160,7 @@ function startPiece() {
     console.log("hello")
    
   }
-  duplicateSection()
+  // duplicateSection()
   playBackground();
   mainGain.gain.rampTo(1, 3);
   para.style.opacity = "0"
@@ -190,13 +196,12 @@ function restartPiece() {
 }
 
 
-<<<<<<< Updated upstream
 this.onload = () => {
   original.style.opacity = "0"
 }
 
-body.addEventListener("touchstart", detectTouch)
-body.addEventListener("mousemove", detectTouch)
+// body.addEventListener("touchstart", detectTouch)
+// body.addEventListener("mousemove", detectTouch)
 
 let outsideX;
 let outsideY;
@@ -254,7 +259,7 @@ function moveFrog() {
    // let randNum = (Math.random() * 10) + 5
     //console.log(randNum)
     let randNum2 = (Math.random() * 60) + 1
-    let randNum3 = (Math.random() * 40) + 1
+    let randNum3 = (Math.random() * 50) + 1
     // original.style.setProperty('--frogWidth', (randNum) + "vw"); 
     original.style.setProperty('--frogTop', (randNum3) + "vh");
     original.style.setProperty('--frogLeft', randNum2 + "vw");
@@ -315,8 +320,6 @@ function moveFrog4() {
   }
 }
 
-=======
->>>>>>> Stashed changes
 function moveFrog() {
   if (!original.moving) {
     original.moving = true;
@@ -488,12 +491,9 @@ socket.on(('connectToRoom', function(data) {
 
 original.addEventListener("touchstart", moveFrog);
 original.addEventListener("mouseover", moveFrog);
-<<<<<<< Updated upstream
 original4.addEventListener("mouseover", moveFrog4);
-=======
 original4.addEventListener("mouseover", moveFrog4)
 let guestFrogName = myInput.value
->>>>>>> Stashed changes
 
 let frogAudio = new Tone.Buffer("media/frog_8.mp3");let frogAudio1 = new Tone.Buffer("media/frog_6.wav");let frogAudio2 = new Tone.Buffer("media/frog_5.mp3");let frogAudio3 = new Tone.Buffer("media/frog_4.mp3");let frogAudio4 = new Tone.Buffer("media/frog_3.mp3");let frogAudio5 = new Tone.Buffer("media/frog1.mp3");
 let frogAudio6 = new Tone.Buffer("media/frogs_2.mp3");let frogAudio7 = new Tone.Buffer("media/frog_7.mp3");let frogAudio8 = new Tone.Buffer("media/frog_9.mp3");let frogAudio9 = new Tone.Buffer("media/frog_10.mp3");let frogAudio10 = new Tone.Buffer("media/frog_11.mp3");let frogAudio11 = new Tone.Buffer("media/frog_12.mp3");
@@ -567,8 +567,6 @@ function duplicate() {
   Tone.loaded().then(() => {
       clone.myFrog1.start(); //start the audio 
    })
-<<<<<<< Updated upstream
-
   //  clone.addEventListener('touchmove', function(event) {
   //   // If there's exactly one finger inside this element
   //   if (event.targetTouches.length == 1) {
@@ -583,9 +581,7 @@ function duplicate() {
    function moveFrog1() {
       let randNum = (Math.random() * 10) + 5
       //console.log(randNum)
-=======
-  clone.onmouseover = function moveFrog1() {
->>>>>>> Stashed changes
+      clone.onmouseover = function moveFrog1() {
       let randNum2 = (Math.random() * 60) + 1
       let randNum3 = (Math.random() * 50) + 1
       let randNum4 = (Math.random() * 20) + 10
@@ -596,7 +592,6 @@ function duplicate() {
       panner1.pan.rampTo(getScaledValue(randNum3, 0, 100, -1, 1), (randNum4))
       if (!clone.classList.contains("frogLook1")) {
          clone.classList.add("frogLook1")
-<<<<<<< Updated upstream
     
         //  clone.style.setProperty('--startLeft', randNum2 + "vw");
         //  clone.style.setProperty('--startTop', randNum3 + "vh");
@@ -611,7 +606,7 @@ function duplicate() {
       clone.classList.remove("frogDissapear")
 
 }
-
+}
 // function getLocation1() {
 
 //   var rect = clone.getBoundingClientRect();
@@ -633,15 +628,13 @@ function duplicate() {
   //body.addEventListener("touch", getLocation1)
 
 
-=======
-      } else if (clone.classList.contains("frogLook1")) {
-        clone.classList.remove("frogLook1")
-      }
-      clone.classList.remove("frogDissapear")
-    }
->>>>>>> Stashed changes
+  //     } else if (clone.classList.contains("frogLook1")) {
+  //       clone.classList.remove("frogLook1")
+  //     }
+  //     clone.classList.remove("frogDissapear")
+  //   }
+  // }
 }
-
 function moveCloneFrog(clone) {
   let randNum2 = (Math.random() * 60) + 1
   let randNum3 = (Math.random() * 50) + 1
@@ -674,14 +667,13 @@ function getCloneLocation(clone) {
   }
  }
 
-
+  
 ////END
 
   document.addEventListener("keyup", (e) => {
     let idNum = Math.floor(Math.random() * cloneArray.length);
     let cl = cloneArray[idNum]
     let randAnTime = (Math.random() * 10) + 5;
-<<<<<<< Updated upstream
     let randAnTime1 = (Math.random() * 20) + 10;
     for (i;i<cloneArray.length;i++){
     cloneArray[i].addEventListener("mouseover", () => {
@@ -690,9 +682,6 @@ function getCloneLocation(clone) {
     })
   }
     if (e.key == "ArrowDown" || e.key == "ArrowLeft") {
-=======
-    if (e.key == "D") {
->>>>>>> Stashed changes
       cloneArray.shift().remove()
     } else if (e.key == "5") {
       cl.classList.remove("moveAgain")
@@ -705,12 +694,8 @@ function getCloneLocation(clone) {
       cl.classList.add("frogDissapear");
      } else if (e.key == "9") {
       cl.classList.remove("frogDissapear")
-<<<<<<< Updated upstream
      } else if (e.key == "d") {
       // let indClone = document.getElementById(`originalFrog${l}`);
-=======
-     } else if (e.key == "0") {
->>>>>>> Stashed changes
       for(l=0;l<frogMainArray.length;l++) {
         frogMainArray[l].style.animation = "fadeOut 1s"
         frogMainArray[l].classList.add("frogDissapear");
@@ -855,395 +840,6 @@ for (o=0; o<localArray.length; o++) {
 }
 
 
-<<<<<<< Updated upstream
-
-
-let threeLocal = [];
-let threeRoom = [];
-
-////////////////////////////////////DUPLICATE Thr/////////////////////////////////////////
-let b = 0;
-
-function duplicateThree(limit = frogLimit, frogUnit = threeLocal) {
-  
-  let clone = original2.cloneNode(true); //make a clone
-  let randomPos = Math.random() * 90
-  let randomPos1 = Math.random() * 90
-  let randomValue3 = (Math.random() * 6) + 3; //Check these random values 
-  clone.id = "originalFrogThree" + ++b; //Give the clone a new id (adding 1 every time)
-  if (frogUnit.length >= limit && frogRoomLimit == 3 && threeLocal.length > 0) {
-    threeLocal.shift().remove()
-    } else if (frogUnit.length >= limit && frogRoomLimit == 3 && threeLocal.length == 0) {
-      threeRoom.shift().remove()
-   } else if (frogUnit.length >= frogRoomLimit && frogRoomLimit > 4) {
-     threeRoom.shift().remove()
-   }
-  original2.parentNode.appendChild(clone); 
-  clone.style.setProperty("--frogWidth", randomValue3 + "em") 
-  clone.style.setProperty("--startLeft", randomPos1 + "vw");
-  clone.style.setProperty("--startTop", randomPos + "vh")
-  clone.style.visibility = "visible"
-  let randAudio = Math.floor(Math.random() * (audioArray2.length)) 
-  clone.myFrog1 = new Tone.Player(audioArray2[randAudio]).connect(panner); //choose random audio 
-  clone.myFrog1.fadeIn = 0.5; 
-  clone.myFrog1.fadeOut = 0.5; //put a fade on the audio to reduce clicks if it restarts 
-  Tone.loaded().then(() => {
-      clone.myFrog1.start(); //start the audio 
-   })
-   
-  function moveFrog1() {
-      let randNum = (Math.random() * 10) + 5
-      let randNum2 = (Math.random() * 50) + 1
-      let randNum3 = (Math.random() * 40) + 1
-      clone.style.setProperty('--frogTop1', (randNum2) + "vh");
-      clone.style.setProperty('--frogLeft1', randNum3 + "vw");
-      clone.style.setProperty('--animationTime', randNum1 + "s");
-
-      clone.myFrog1.start();
-      panner = new Tone.Panner(getScaledValue(randNum2, 0, 100, -1, 1)).connect(mainGain);
-      panner.pan.rampTo(getScaledValue(randNum2, 0, 100, -1, 1), (randNum1))
-
-      if (!clone.classList.contains("frogLook1")) {
-        clone.classList.add("frogLook1")
-     } else if (clone.classList.contains("frogLook1")) {
-       clone.classList.remove("frogLook1")
-       
-  }
-  clone.classList.remove("frogDissapear")
-
-}
-frogUnit.push(clone);
-frogMainArray.push(clone);
-for (o=0; o<threeLocal.length; o++) {
-  console.log(threeLocal[o].id)
-  threeLocal[o].addEventListener("click", emitFrog)
-}
-// function getLocation() {
-
-//   var rect = clone.getBoundingClientRect();
-//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
-  
-//   moveFrog1()
-//     console.log("liftoff")
-//   } else {
-//     //console.log(rect.left, outsideX, rect.top, outsideY)
-//   }
-  
-//   }
-
- // clone.addEventListener("mouseover", getLocation);
-  //clone.addEventListener("touch", getLocation)
-  clone.addEventListener("mouseover", moveFrog1);
-  clone.addEventListener("touch", moveFrog1)
-  //body.addEventListener("touch", getLocation)
-}
-
-let fourLocal = [];
-let fourRoom = [];
-
-//let limitArray = [10, 3];
-
-
-let c = 0;
-
-////////////////////////////////////DUPLICATE FOUR/////////////////////////////////////////
-
-
-function duplicateFour(limit = frogLimit, frogUnit = fourLocal) {
-  
-  let clone = original3.cloneNode(true); //make a clone
-  let randomValue3 = Math.floor(Math.random() * 6) + 4; //Check these random values 
-  let randomPos = Math.random() * 90
-  let randomPos1 = Math.random() * (95- randomValue3)
-    clone.id = "originalFrogFour" + ++c; //Give the clone a new id (adding 1 every time)
-    if (frogUnit.length >= limit && frogRoomLimit == 3 && fourLocal.length > 0) {
-      fourLocal.shift().remove()
-      } else if (frogUnit.length >= limit && frogRoomLimit == 3 && fourLocal.length == 0) {
-      fourRoom.shift().remove()
-    } else if (frogUnit.length >= frogRoomLimit && frogRoomLimit > 4) {
-      fourRoom.shift().remove()
-    }
-    original1.parentNode.appendChild(clone);
-   
-  clone.style.setProperty("--frogWidth", randomValue3 + "em") 
-  clone.style.setProperty("--startLeft", randomPos1 + "vw");
-  clone.style.setProperty("--startTop", randomPos + "vh");
- 
-  //randomize starting position and size
-
-  clone.style.visibility = "visible"
-
-  let randAudio = Math.floor(Math.random() * (audioArray3.length)) 
-  clone.myFrog1 = new Tone.Player(audioArray3[randAudio]).connect(panner); //choose random audio 
-  clone.myFrog1.fadeIn = 0.5; 
-  clone.myFrog1.fadeOut = 0.5; //put a fade on the audio to reduce clicks if it restarts 
-  Tone.loaded().then(() => {
-      clone.myFrog1.start(); //start the audio 
-   })
-   
-
-  function moveFrog1() {
-      let randNum = (Math.random() * 10) + 5
-      //console.log(randNum)
-      let randNum2 = (Math.random() * 60) + 1
-      let randNum3 = (Math.random() * 40) + 1
-     // console.log(randNum3)
-     // clone.style.setProperty('--frogWidth', (randNum) + "em");
-      clone.style.setProperty('--frogTop1', (randNum2) + "vh");
-      clone.style.setProperty('--frogLeft1', randNum3 + "vw");
-      clone.style.setProperty('--animationTime', randNum1 + "s");
-
-      clone.myFrog1.start();
-      panner = new Tone.Panner(getScaledValue(randNum2, 0, 100, -1, 1)).connect(mainGain);
-      panner.pan.rampTo(getScaledValue(randNum2, 0, 100, -1, 1), (randNum1))
-
-      if (!clone.classList.contains("frogLook1")) {
-        clone.classList.add("frogLook1")
-        
-       //  clone.style.setProperty('--startLeft', randNum2 + "vw");
-       //  clone.style.setProperty('--startTop', randNum3 + "vh");
-     } else if (clone.classList.contains("frogLook1")) {
-       clone.classList.remove("frogLook1")
-       
-  }
-  clone.classList.remove("frogDissapear")
-
-  
-
-}
-frogUnit.push(clone);
-frogMainArray.push(clone);
-for (o=0; o<fourLocal.length; o++) {
-  fourLocal[o].addEventListener("click", emitFrog)
-}
-clone.classList.remove("frogDissapear")
-// function getLocation() {
-
-//   var rect = clone.getBoundingClientRect();
-//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
-  
-//   moveFrog1()
-//     console.log("liftoff")
-//   } else {
-//     //console.log(rect.left, outsideX, rect.top, outsideY)
-//   }
-  
-//   }
-
-  //clone.addEventListener("mouseover", getLocation);
-  //clone.addEventListener("touch", getLocation)
-  clone.addEventListener("mouseover", moveFrog1);
-  clone.addEventListener("touch", moveFrog1)
-  //body.addEventListener("touch", getLocation)
-}
-
-
-/////////////////////Duplicate Five/////////////////////
-
-
-let fiveLocal = [];
-let fiveRoom = [];
-
-
-let d = 0;
-
-function duplicateFive(limit = frogLimit, frogUnit = fiveLocal) {
-  
-  let clone = original5.cloneNode(true); //make a clone
-  let randomValue3 = Math.floor(Math.random() * 8) + 5; //Check these random values 
-  let randomPos = Math.random() * 90
-  let randomPos1 = Math.random() * (90 - randomValue3)
-    clone.id = "originalFrogFive" + ++d; //Give the clone a new id (adding 1 every time)
-    if (frogUnit.length >= limit && frogRoomLimit == 3 && fiveLocal.length > 0) {
-      fiveLocal.shift().remove()
-    } else if (frogUnit.length >= limit && frogRoomLimit == 3 && fiveLocal.length == 0) {
-        fiveRoom.shift().remove()
-    } else if (frogUnit.length >= frogRoomLimit && frogRoomLimit > 4) {
-      fiveRoom.shift().remove()
-    }
-    original5.parentNode.appendChild(clone);
-   
-  clone.style.setProperty("--frogWidth", randomValue3 + "em") 
-  clone.style.setProperty("--startLeft", randomPos1 + "vw");
-  clone.style.setProperty("--startTop", randomPos + "vh");
- 
-  //randomize starting position and size
-
-  clone.style.visibility = "visible"
-
-  // let randomImage = Math.floor(Math.random() * 5)
-  // clone.src = frogImageArray[randomImage];
-  // console.log(clone)
-  let randAudio = Math.floor(Math.random() * (audioArray4.length)) 
-  clone.myFrog1 = new Tone.Player(audioArray4[randAudio]).connect(panner); //choose random audio 
-  clone.myFrog1.fadeIn = 0.5; 
-  clone.myFrog1.fadeOut = 0.5; //put a fade on the audio to reduce clicks if it restarts 
-  Tone.loaded().then(() => {
-      clone.myFrog1.start(); //start the audio 
-   })
-  
-  function moveFrog1() {
-      let randNum = (Math.random() * 10) + 5
-      //console.log(randNum)
-      let randNum2 = (Math.random() * 60) + 1
-      let randNum3 = (Math.random() * 40) + 1
-     // console.log(randNum3)
-      //clone.style.setProperty('--frogWidth', (randNum) + "em");
-      clone.style.setProperty('--frogTop1', (randNum2) + "vh");
-      clone.style.setProperty('--frogLeft1', randNum3 + "vw");
-      clone.style.setProperty('--animationTime', randNum1 + "s");
-
-      clone.myFrog1.start();
-      panner = new Tone.Panner(getScaledValue(randNum2, 0, 100, -1, 1)).connect(mainGain);
-      panner.pan.rampTo(getScaledValue(randNum2, 0, 100, -1, 1), (randNum1))
-
-      if (!clone.classList.contains("frogLook1")) {
-        clone.classList.add("frogLook1")
-        
-       //  clone.style.setProperty('--startLeft', randNum2 + "vw");
-       //  clone.style.setProperty('--startTop', randNum3 + "vh");
-     } else if (clone.classList.contains("frogLook1")) {
-       clone.classList.remove("frogLook1")
-      
-  }
-  clone.classList.remove("frogDissapear")
-
-    // if (clone.classList.contains = "frog") {
-    //   console.log("working!")
-    // }
-}
-frogUnit.push(clone);
-frogMainArray.push(clone)
-for (o=0; o<fiveLocal.length; o++) {
-  fiveLocal[o].addEventListener("click", emitFrog)
-}
-// function getLocation() {
-
-//   var rect = clone.getBoundingClientRect();
-//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
-  
-//   moveFrog1()
-//     console.log("liftoff")
-//   } else {
-//     //console.log(rect.left, outsideX, rect.top, outsideY)
-//   }
-  
-//   }
-
-  //clone.addEventListener("mouseover", getLocation);
-  //clone.addEventListener("touch", getLocation)
-  clone.addEventListener("mouseover", moveFrog1);
-  clone.addEventListener("touch", moveFrog1)
-  //body.addEventListener("touch", getLocation)
-
-}
-
-
-/////////////////////Duplicate Six/////////////////////
-
-
-let sixLocal = [];
-let sixRoom = [];
-
-let e = 0;
-function duplicateSix(limit = frogLimit, frogUnit = sixLocal) {
-  
-  let clone = original6.cloneNode(true); //make a clone
-  let randomValue3 = Math.floor(Math.random() * 6) + 3; //Check these random values 
-  let randomPos = Math.random() * 90
-  let randomPos1 = Math.random() * (90 - randomValue3)
-    clone.id = "originalFrogSix" + ++e; //Give the clone a new id (adding 1 every tim
-    if (frogUnit.length >= limit && frogRoomLimit == 3 && sixLocal.length > 0) {
-      sixLocal.shift().remove()
-      } else if (frogUnit.length >= limit && frogRoomLimit == 3 && sixLocal.length == 0) {
-        sixRoom.shift().remove()
-  } else if (frogUnit.length >= frogRoomLimit && frogRoomLimit > 4) {
-  sixRoom.shift().remove()
-}
-    original6.parentNode.appendChild(clone);
-   
-  clone.style.setProperty("--frogWidth", randomValue3 + "em") 
-  clone.style.setProperty("--startLeft", randomPos1 + "vw");
-  clone.style.setProperty("--startTop", randomPos + "vh");
- 
-  //randomize starting position and size
-
-  clone.style.visibility = "visible"
-
-  // let randomImage = Math.floor(Math.random() * 5)
-  // clone.src = frogImageArray[randomImage];
-  // console.log(clone)
-  let randAudio = Math.floor(Math.random() * (audioArray5.length)) 
-  clone.myFrog1 = new Tone.Player(audioArray5[randAudio]).connect(panner); //choose random audio 
-  clone.myFrog1.fadeIn = 0.5; 
-  clone.myFrog1.fadeOut = 0.5; //put a fade on the audio to reduce clicks if it restarts 
-  Tone.loaded().then(() => {
-      clone.myFrog1.start(); //start the audio 
-   })
-  
-   function moveFrog1() {
-      let randNum = (Math.random() * 10) + 5
-      //console.log(randNum)
-      let randNum2 = (Math.random() * 60) + 1
-      let randNum3 = (Math.random() * 40) + 1
-     // console.log(randNum3)
-      //clone.style.setProperty('--frogWidth', (randNum) + "em");
-      clone.style.setProperty('--frogTop1', (randNum2) + "vh");
-      clone.style.setProperty('--frogLeft1', randNum3 + "vw");
-      clone.style.setProperty('--animationTime', randNum1 + "s");
-
-      clone.myFrog1.start();
-      panner = new Tone.Panner(getScaledValue(randNum2, 0, 100, -1, 1)).connect(mainGain);
-      panner.pan.rampTo(getScaledValue(randNum2, 0, 100, -1, 1), (randNum1))
-
-      if (!clone.classList.contains("frogLook1")) {
-        clone.classList.add("frogLook1")
-       
-        
-       //  clone.style.setProperty('--startLeft', randNum2 + "vw");
-       //  clone.style.setProperty('--startTop', randNum3 + "vh");
-     } else if (clone.classList.contains("frogLook1")) {
-       clone.classList.remove("frogLook1")
-       
-  }
-  clone.classList.remove("frogDissapear")
-
-   
-}
-
-// function getLocation() {
-
-//   var rect = clone.getBoundingClientRect();
-//    if (rect.top < outsideY && rect.top > outsideY - moveAway && rect.left < outsideX && rect.left > outsideX - moveAway) {
-//   //  if (rect.left < outsideX && rect.left > outsideX - 30) {
-  
-//   moveFrog1()
-//     console.log("liftoff")
-//   } else {
-//     //console.log(rect.left, outsideX, rect.top, outsideY)
-//   }
-  
-//   }
-
-  //clone.addEventListener("mouseover", getLocation);
-  //clone.addEventListener("touch", getLocation)
-  clone.addEventListener("mouseover", moveFrog1);
-  clone.addEventListener("touch", moveFrog1)
- // body.addEventListener("touch", getLocation)
-frogUnit.push(clone);
-frogMainArray.push(clone);
-for (o=0; o<sixLocal.length; o++) {
-  sixLocal[o].addEventListener("click", emitFrog)
-}
-clone.classList.remove("frogDissapear")
-
-}
-
-=======
->>>>>>> Stashed changes
 function spawnFrog() {
   for (i=0;i<200;i++) {
     duplicate()
@@ -1261,14 +857,8 @@ socket.on("the_end", () => {
   duplicateTwo()
 })
 
-<<<<<<< Updated upstream
-
-
- 
-=======
-let body = document.querySelector("body");
+// let body = document.querySelector("body");
 document.body.style.cursor = 'none';
->>>>>>> Stashed changes
 
 
 socket.on("hide_button", () => {
@@ -1329,6 +919,7 @@ socket.on("end_piece", () =>  {
 
 
 function duplicateSection() {
+  console.log("What is going on")
   // mainButton.style.opacity = "1"
   // mainButton.innerHTML = "Try clicking on a frog!";
   // mainButton.style.fontSize = "6vw"
@@ -1340,50 +931,35 @@ function duplicateSection() {
 
 }
 
-<<<<<<< Updated upstream
-
-
-
-
-
-=======
->>>>>>> Stashed changes
 document.addEventListener("keyup", (e) => {
   if (e.key == "ArrowUp" || e.key == "ArrowRight") {
     socket.emit("main_display", true);
-<<<<<<< Updated upstream
-    setTimeout(() => {
-      socket.emit("make_show_button", true);
-    }, 1000)
-    // console.log("you are the main")
-    // socket.emit("make_hide_button", true);
-=======
->>>>>>> Stashed changes
     mainButton.style.visibility = "hidden"
     frogRoomLimit = 20; //THIS SETS THE NUMBER OF FROGS!!! 
-  } else if (e.key == "h") {
-    socket.emit("make_show_button", true);
-    
-  } else if (e.key == "P") {
-    socket.emit("make_hide_button", true)
-
-  } else if (e.key == "R") {
-    socket.emit("restart_piece", true);
-  } else if (e.key == "Q") {
-     oneBigFrog()
-
-  } else if (e.key == "e") {
-    
-    socket.emit("fade_to_black", true);
-    endPiece()
-     //make a variable for this 
-  } else if (e.key == "c") {
-    // console.log(":P")
-    changeSound();
-    socket.emit("change_sound", () => {
-
-    })
   }
+  // } else if (e.key == "h") {
+  //   socket.emit("make_show_button", true);
+    
+  // } else if (e.key == "P") {
+  //   socket.emit("make_hide_button", true)
+
+  // } else if (e.key == "R") {
+  //   socket.emit("restart_piece", true);
+  // } else if (e.key == "Q") {
+  //    oneBigFrog()
+
+  // } else if (e.key == "e") {
+    
+  //   socket.emit("fade_to_black", true);
+  //   endPiece()
+  //    //make a variable for this 
+  // } else if (e.key == "c") {
+  //   // console.log(":P")
+  //   changeSound();
+  //   socket.emit("change_sound", () => {
+
+  //   })
+  // }
 })
 
 function changeSound() {
@@ -1451,4 +1027,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key == "1") {
   }
 })
+
+
 
