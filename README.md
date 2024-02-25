@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #Frog
 
 Frog controls: 
@@ -8,3 +9,5 @@ Plus => allow more frogs from clients
 Minus => allow fewer frogs from clients 
 d => make frogs dissolve
 e => fade to black 
+=======
+>>>>>>> Stashed changes

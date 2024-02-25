@@ -6,7 +6,7 @@ const port = 8501
 
 const http = require('http');
 const server = http.createServer(app);
-const Server = require("socket.io");
+const { Server } = require("socket.io");
 const io = new Server(server);
 
 
@@ -16,47 +16,36 @@ server.listen(port, () => {
     console.log("Hello World")
 })
 
-
 let idArray = [];
 let mainDisplay;
 let frogState = {
     section: "start"
 }
 
-
-
-
 io.on('connection', (socket) => {
-   console.log(idArray.length)
-    // socket.on('frogHover', (data) => {
-    //     console.log(data)
-    // })
-    //console.log(socket.id)
     socket.on("fade_to_black", () => {
-       // socket.broadcast.emit("end_piece", true);
         frogState.section = "ending";
         socket.broadcast.emit("set_section", frogState.section)
-
     })
-    
     socket.on("make_show_button", () => {
     frogState.section = "duplicate";
     socket.broadcast.emit("frogVisible", true);
     })
-
     socket.on("make_hide_button", () => {
         socket.broadcast.emit('hide_button')
     })
-
     socket.on("restart_piece", () => {
         frogState.section = "restart";
         io.emit("set_section", frogState.section)
     })
-
     socket.on("trigger_ending", () => {
         socket.broadcast.emit('the_end', true)
         socket.emit('the_end', true)
         console.log("hello")
+    })
+    socket.on("theName", (value) => {
+      io.emit("input", value)
+      console.log(value)
     })
 
     idArray.push(socket.id);
@@ -72,7 +61,7 @@ io.on('connection', (socket) => {
     })
 
 
-    if (idArray.length <= 3) {
+    if (idArray.length < 0) {
 
     socket.emit("room", 1)
     socket.join('room1')
@@ -90,8 +79,13 @@ io.on('connection', (socket) => {
     }
 
 
+<<<<<<< Updated upstream
 else if (idArray.length > 3 && idArray.length <= 5) {
       socket.join('room2');
+=======
+else if (idArray.length > 0 && idArray.length <= 5) {
+    socket.join('room2');
+>>>>>>> Stashed changes
       console.log("room2");
       socket.emit("room", 2)
       socket.on("testing", () => {
@@ -100,7 +94,7 @@ else if (idArray.length > 3 && idArray.length <= 5) {
 
 })
 
-} else if (idArray.length > 5 && idArray.length < 8) {
+} else if (idArray.length > 5) {
       socket.join('room3');
       console.log("room3");
       socket.emit("room", 3)

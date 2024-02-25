@@ -10,22 +10,29 @@
   <link rel="stylesheet" href="./style.css" href="base_url.com/file.css?v=1.123">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" href="media/favicon.ico">
-  <!-- <link rel="script" href="./script.js"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+
+
 </head>
 
 
 <body>
 
-  <!-- <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
-  </style> -->
+
+<div class="full-landing-image">
 
 <!-- <div class="full-landing-image"></div> -->
 <div id="flexDiv">
-    <button id="mainButton"> Click for Frog </button>
+  <div class="space">.</div>
+  <div class="space">.</div>
+  <div class="space">.</div>
+  <div class="space">.</div>
+    <button id="mainButton" onclick="startAudio()"> Click for Frog </button>
     <div class="space">.</div>
     <div class="space">.</div>
     <div class="space">.</div>
+<<<<<<< Updated upstream
     <div id="para"> by Treya Nash with Art by Nick Barrett</div>
 
 </div>
@@ -50,6 +57,46 @@
 <img class="frogStart2" id="fifthFrog" draggable="true" src="media/frog_51.png">
 <img class="frogStart2" id="fourthFrog" draggable="true"  src="media/froggo5.png"> 
 <img class="frogStart2" id="sixthFrog"draggable="true"  src="media/froggo4.png">
+=======
+    <div id="para"> Art by Nick Barrett</div>
+    <label for="myInput" id="myInputLabel" style="color: white; visibility: hidden;">What will you name your frog?</label>
+      <input name="myInput" id="myInput" style="visibility: hidden;"/>
+      <button onclick="enterName()" id="submit" style="visibility: hidden; background-color: #589e96; font-family: times; border: none; font-size: 20px; color: white; margin-top: 5px">Submit Name</button>
+</div>
+
+<div class="overlay"></div>
+<div class="frogStart" id="originalFrog" style="height: 50px; opacity: 1;visibility: hidden; width: 50px">
+<img  src="media/froggo4.png" style="height: inherit; opacity: 1; "> 
+<p id="name" style="color: #589e96; margin-top: -8px; text-align: center;"></p>
+</div>
+<div class="frogStart1" id="original1" style="height: 50px; opacity: 1;visibility: hidden ">
+<img  src="media/froggy3_new.png" style="height: inherit; opacity: 1"> 
+<p id="name1" style="color: #589e96; text-align: center; margin-top: -8px"></p>
+</div>
+<div class="frogStart1" id="original2" style="height: 50px; opacity: 1; visibility: hidden">
+  <img src="media/frog_51.png" style="height: inherit; opacity: 1; "> 
+  <p id="name2" style="color: #589e96; text-align: center; margin-top: -8px"></p>
+</div>
+<div class="frogStart1" id="original3" style="height: 50px; opacity: 1; visibility: hidden">
+  <img id="originalImg" src="media/froggo5.png" style="height: inherit; opacity: 1; "> 
+  <p id="name3" style="color: #589e96; text-align: center; margin-top: -8px"></p>
+</div>
+<div class="frogStart" id="original4" style="height: 50px; opacity: 1; visibility: hidden">
+<img  id="originalImg1" onmouseover="moveFrog()" src="media/frog_6.png" style="height: inherit; opacity: 1; "> 
+<p id="name4" style="color: #589e96; margin-top: -8px"></p>
+</div>
+<div class="frogStart1" id="original5" style="height: 50px; opacity: 1; visibility: hidden">
+  <img src="media/froggo4.png" style="height: inherit; opacity: 1; "> 
+  <p id="name5" style="color: #589e96; text-align: center; margin-top: -8px"></p>
+</div>
+<div class="frogStart1" id="original6" style="height: 50px; opacity: 1; visibility: hidden">
+  <img src="media/froggy2_s.png" style="height: inherit; opacity: 1; "> 
+  <p id="name6" style="color: #589e96; text-align: center; margin-top: -8px"></p>
+</div>
+
+</div>
+
+>>>>>>> Stashed changes
 
 
 </meta>

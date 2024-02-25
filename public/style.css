@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 
 body {
@@ -8,13 +9,33 @@ body {
   position: relative;
   background-image: url("media/background.jpg"); 
   /* opacity: 0.5; */
+=======
+body{
+  margin:0;
+  padding: 0;
+}
+.full-landing-image{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('media/background.jpg') no-repeat center;
+  background-size: cover;
+
+}
+
+
+/* body {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-image: url("media/background.jpg");
+>>>>>>> Stashed changes
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* background-color: rgba(70, 230, 26, 0.5); /* Tint color */
-  /* background-blend-mode: multiply; */
-  transition: background-color 10s, opacity 10s
-}
+  transition: background-color 10s, opacity 10s;
+  touch-action:none;
+} */
 
 /* .the {
   background-color: rgba(46, 59, 208, 0.64);
@@ -26,8 +47,13 @@ html, body {
   overflow-y: hidden;
 }
 
+#myInputLabel {
+  font-size: 20px
+}
 
-
+#myInput {
+  font-size: 20px
+}
 
 @media only screen and (max-width: 600px) {
   #originalFrog {
@@ -76,6 +102,7 @@ html, body {
 }
 
 #mainButton {
+  position: relative;
   border: none;
   color: #102c2f;
   background-color: #589e96;
@@ -83,7 +110,8 @@ html, body {
   height: 2.5em;
   font-family: Georgia;
   transition: opacity 5s;
-  border-radius: 45%
+  border-radius: 45%;
+  top: 20px
 }
 
 
@@ -128,9 +156,9 @@ html, body {
   position: relative;
 }
 
-#frogPannerButton {
+/* #frogPannerButton {
   top: 30px;
-}
+} */
 
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -149,18 +177,18 @@ html, body {
   left: 50vw;
   top: 50vh;
   opacity: 0;
-  transition: width var(--animationTime), left var(--animationTime), top 5s, opacity 5s;
+  transition: left var(--animationTime), top 5s, opacity 5s;
   
 }
 
 .frogStart1 {
   will-change: transform;
   position: absolute;
-  visibility: hidden;
+  /* visibility: hidden; */
   width: var(--frogWidth);
   left: var(--startLeft);
   top: var(--startTop);
-  transition: opacity 5s, width var(--animationTime), left var(--animationTime), top 10s;
+  transition: opacity 5s, left var(--animationTime), top 10s;
   animation: fadeIn 2s
   
 }
@@ -171,7 +199,7 @@ html, body {
   width: var(--frogWidth);
   left: var(--startLeft);
   top: var(--startTop);
-  transition: opacity 5s, width var(--animationTime), left var(--animationTime), top 10s;
+  transition: opacity 5s, left var(--animationTime), top 10s;
   animation: fadeIn 2s
   /* visibility: hidden; */
 }
@@ -183,7 +211,7 @@ html, body {
   width: 10vw;
   left: 40vw;
   top: 60vh;
-  transition: opacity 5s, width var(--animationTime), left var(--animationTime), top 10s;
+  transition: opacity 5s, left var(--animationTime), top 10s;
   /* animation: fadeIn 2s */
   /* visibility: hidden; */
 }
@@ -197,7 +225,7 @@ html, body {
 :root {
   --startLeft: 0vw;
   --startTop: 0vh;
-  --frogWidth: 1vw;
+  --frogWidth: 10vw;
   --frogTop: 0vh;
   --frogTop1: 0vh;
   --frogTop2: 0vh;
@@ -215,7 +243,7 @@ html, body {
   left: var(--frogLeft);
   top: var(--frogTop);
   /* opacity: 1; */
-  transition:  width var(--animationTime), left var(--animationTime), top 10s, opacity 5s;
+  transition: left var(--animationTime), top 10s, opacity 5s;
   /*left: var(--mouse-x);*/
 }
 
